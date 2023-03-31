@@ -1,5 +1,4 @@
 //6.1 Write, compile and run the ChoosingOption program
-package JavaBasics.src.bin;
 import javax.swing.JOptionPane;
 public class ChoosingOption {
  public static void main(String[] args) {
@@ -12,16 +11,14 @@ public class ChoosingOption {
  }
 }
 
-//Questions:
+// Questions:
 
-//- What happens if users choose "Cancel"?
-//
-//Answer: The program will not be launched.
+// - What happens if users choose "Cancel"?
+// Answer: The program will not be launched.
 
-//- How to customize the options to users, e.g. only two options: "Yes" and "No", OR "I do"
-//and " I don't " (Suggestion: Use Javadocs or using Eclipse/Netbean IDE help).
-//
-//Answer: change int option
-//- "Yes" and "No": JOptionPane.showConfirmDialog(null, "Do you want ...", null, 0)
-//- "I do" and "I don't": create an Object array: Object[] options = {"I do", "I don't"}
+// - How to customize the options to users, e.g. only two options: "Yes" and "No", OR "I do"
+// and " I don't " (Suggestion: Use Javadocs or using Eclipse/Netbean IDE help).
+// Answer: change int option
+// - "Yes" and "No": JOptionPane.showConfirmDialog(null, "Do you want ...", null, 0)
+// - "I do" and "I don't": create an Object array: Object[] options = {"I do", "I don't"}
 //   JOptionPane.showOptionDialog(null, "Do you want ...", null, 0, 0, choice, choice[0])
