@@ -1,4 +1,4 @@
-//6.2 Write a program for input/output from keyboard
+// 6.2 Write a program for input/output from keyboard
 
 import java.util.Scanner;
 
