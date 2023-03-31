@@ -1,5 +1,7 @@
 //6.2 Write a program for input/output from keyboard
+
 import java.util.Scanner;
+
 public class InputFromKeyboard {
 	public static void main(String args[]) {
 		Scanner keyboard = new Scanner(System.in);
