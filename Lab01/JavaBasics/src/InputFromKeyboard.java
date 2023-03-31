@@ -20,4 +20,4 @@ public class InputFromKeyboard {
 		System.out.println("Mrs/Ms. " + strName + ", " + iAge + " year old. "
 				+ "Your height is " + dHeight + ".");
 	}
-}
+} 
