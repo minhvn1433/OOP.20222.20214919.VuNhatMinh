@@ -1,5 +1,5 @@
-// 6.2 Write a program for input/output from keyboard
-
+//6.2 Write a program for input/output from keyboard
+package JavaBasics.src.bin;
 import java.util.Scanner;
 public class InputFromKeyboard {
 	public static void main(String args[]) {
