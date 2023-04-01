@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class DaysOfAMonth {
 	public static void main(String[] args) {
+		// Create scanner object. Initialize variables
 		Scanner input = new Scanner(System.in);
 		
 		String monthStr;
@@ -12,11 +13,14 @@ public class DaysOfAMonth {
 		int year;
 		int days;
 		
+		// Loop until user give valid input
 		while (true) {
+			// Prompt user input
 			System.out.print("Enter a month and a year: ");
 			monthStr = input.next();
 			yearStr = input.next();
 
+			// Go back to beginning of the loop if user give invalid year
 			try {
 				year = Integer.parseInt(yearStr);
 				if (year < 0) {
@@ -27,6 +31,8 @@ public class DaysOfAMonth {
 				continue;
 			}
 
+			// Go back to beginning of the loop if user give invalid month
+			// Return number of days in month 
 			switch (monthStr.toLowerCase()) {
 				case "january":
 				case "jan.":
@@ -117,6 +123,8 @@ public class DaysOfAMonth {
 			}
 			break;
 		}
+
+		// Print the number of days in month
 		System.out.println("Number of days: " + days);
 		input.close();
 	}
