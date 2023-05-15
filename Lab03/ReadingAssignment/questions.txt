@@ -1,1 +1,0 @@
-Yes because java allow constructor overloading. The number of arguments are the same and types of arguments are different. So the methods have the same name but different signatures.
