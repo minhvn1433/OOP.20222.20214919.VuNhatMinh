@@ -18,6 +18,10 @@ public class Track implements Playable {
 		this.title = title;
 		this.length = length;
 	}
+	public Track(String title) {
+		this.title = title;
+	}
+	public Track() {}
 
 	
 	public void play() {
@@ -26,8 +30,15 @@ public class Track implements Playable {
 	}
 
 
-	public boolean equals(Track track) {
-		return this.getTitle() == track.getTitle() && this.getLength() == track.getLength();
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof Track) {
+			Track t = (Track) o;
+			if ((this.title == t.getTitle()) && (this.length == t.getLength())) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

@@ -5,6 +5,11 @@ import hust.soict.dsai.aims.media.Media;
 public class Store {
 
 	private ArrayList<Media> itemsInStore = new ArrayList<Media>();
+
+
+	public ArrayList<Media> getItemsInStore() {
+		return itemsInStore;
+	}
 	
 
 	public void addMedia(Media media) {
@@ -20,4 +25,13 @@ public class Store {
 		}
 	}
 
+
+	public void print() {
+		System.out.println("**********************STORE***********************");
+		System.out.println("Items In Store:");
+		for (Media m: itemsInStore) {
+			System.out.println(m.toString());
+		}
+		System.out.println("***************************************************");
+	}
 }

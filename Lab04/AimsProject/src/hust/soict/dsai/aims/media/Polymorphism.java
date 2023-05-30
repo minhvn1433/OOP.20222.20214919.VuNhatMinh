@@ -4,22 +4,22 @@ import java.util.List;
 
 public class Polymorphism {
     public static void main(String[] args){
-        List<Media> mediae = new ArrayList<>();
+        List<Media> mediae = new ArrayList<Media>();
         
         
         // create some media here
         // for example: cd, dvd, book
         CompactDisc cd = new CompactDisc();
         DigitalVideoDisc dvd = new DigitalVideoDisc();
-        Book book = new Book();
+        Book b = new Book();
         
         mediae.add(cd);
         mediae.add(dvd);
-        mediae.add(book);
-        Track track = new Track("Orange - Shigatsu Wa Kimi No Uso", 6);
-        cd.addTrack(track);
+        mediae.add(b);
+        Track t = new Track();
+        cd.addTrack(t);
         
-        for (Media m :mediae){
+        for (Media m : mediae) {
             System.out.println(m.toString());
         }
     }

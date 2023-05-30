@@ -9,6 +9,7 @@ public abstract class Media {
 	private String title;
 	private String category;
 	private float cost;
+	private static int nbMedias = 0;
 	
 	
 	public int getId() {
@@ -41,20 +42,29 @@ public abstract class Media {
 		this.title = title;
 		this.category = category;
 		this.cost = cost;
+		nbMedias += 1;
+		this.id = nbMedias;
 	}
 	public Media(String title) {
 		this.title = title;
+		nbMedias += 1;
+		this.id = nbMedias;
 	}
-	public Media() {}
-
-	
-	public boolean equals(Media media) {
-		return this.getTitle() == media.getTitle();
+	public Media() {
+		nbMedias += 1;
+		this.id = nbMedias;
 	}
 
-	
-	public String toString() {
-		return String.format("Title: ", this.getTitle());
+
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof Media) {
+			Media m = (Media) o;
+			if (this.title == m.getTitle()) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
