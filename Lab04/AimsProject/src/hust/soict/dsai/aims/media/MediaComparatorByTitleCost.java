@@ -8,6 +8,6 @@ public class MediaComparatorByTitleCost implements Comparator<Media> {
         if (t != 0) {
             return t;
         }
-        return Double.compare(m1.getCost(), m2.getCost());
+        return Float.compare(m2.getCost(), m1.getCost());
     }
 }

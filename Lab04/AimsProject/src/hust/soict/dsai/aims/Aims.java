@@ -6,6 +6,7 @@ import hust.soict.dsai.aims.media.*;
 
 import java.util.Collections;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Aims {
 
@@ -19,7 +20,7 @@ public class Aims {
 		store.addMedia(cd);
 		DigitalVideoDisc dvd = new DigitalVideoDisc("Star Wars", "Science Fiction", 24.95f, "George Lucas", 87);
 		store.addMedia(dvd);
-		Book b = new Book("Cô gái bên tôi 10 năm kết hôn rồi", "Sad Ending", 18.99f);
+		Book b = new Book("Aladin", "Animation", 18.99f);
 		store.addMedia(b);
 
 		showMenu();
@@ -37,21 +38,37 @@ public class Aims {
 		System.out.println("--------------------------------");
 		System.out.println("Please choose a number: 0-1-2-3");
 
-		int i = scanner.nextInt();
+		int i = 0;
+		try {
+			i = scanner.nextInt();
+		}
+		catch(InputMismatchException exception) {
+			System.out.println("Please choose a valid number");
+			scanner.nextLine();
+			showMenu();
+			System.exit(0);
+		}
+
 		switch(i) {
 			case 0:
 				System.out.println("Bye bye");
+				break;
 			case 1:
 				storeMenu();
+				break;
 			case 2:
 				updateStore();
+				break;
 			case 3:
 				cartMenu();
+				break;
 			default:
 				System.out.println("Please choose a valid number");
 				showMenu();
+				break;
 		}
 	}
+
 
 	// 1. View store
 	public static void storeMenu() {
@@ -65,29 +82,47 @@ public class Aims {
 		System.out.println("--------------------------------");
 		System.out.println("Please choose a number: 0-1-2-3-4");
 
-		int i = scanner.nextInt();
+		int i = 0;
+		try {
+			i = scanner.nextInt();
+		}
+		catch (InputMismatchException exception) {
+			System.out.println("Please choose a valid number");
+			scanner.nextLine();
+			storeMenu();
+			System.exit(0);
+		}
+
 		switch(i) {
 			case 0: 
 				showMenu();
+				break;
 			case 1: 
 				storeMenu1();
+				break;
 			case 2: 
 				storeMenu2();
+				break;
 			case 3: 
 				storeMenu3();
+				break;
 			case 4: 
 				cartMenu();
+				break;
 			default: 
 				System.out.println("Please choose a valid number");
 				storeMenu();
+				break;
 		}
 	}
 
 
 	public static void storeMenu1() {
+		scanner.nextLine();
 		System.out.println("Enter title: ");
-		String title = scanner.next();
+		String title = scanner.nextLine();
 		boolean flag = true;
+
 		for (Media m: store.getItemsInStore()) {
 			if (m.getTitle().equals(title)) {
 				System.out.println(m.toString());
@@ -103,13 +138,15 @@ public class Aims {
 
 
 	public static void storeMenu2() {
+		scanner.nextLine();
 		System.out.println("Enter title: ");
-		String title = scanner.next();
+		String title = scanner.nextLine();
 		boolean flag = true;
+
 		for (Media m: store.getItemsInStore()) {
 			if (m.getTitle().equals(title)) {
 				cart.addMedia(m);
-				System.out.println("Number of medias in current cart: %d" + cart.getItemsOrdered().size());
+				System.out.println("Number of medias in current cart: " + cart.getItemsOrdered().size());
 				flag = false;
 			}
 		}
@@ -121,9 +158,11 @@ public class Aims {
 
 
 	public static void storeMenu3() {
+		scanner.nextLine();
 		System.out.println("Enter title: ");
-		String title = scanner.next();
+		String title = scanner.nextLine();
 		boolean flag = true;
+
 		for (Media m: store.getItemsInStore()) {
 			if (m.getTitle().equals(title)) {
 				if (m instanceof CompactDisc) {
@@ -156,13 +195,26 @@ public class Aims {
 		System.out.println("--------------------------------");
 		System.out.println("Please choose a number: 0-1-2");
 
-		int i = scanner.nextInt();
+		int i = 0;
+		try {
+			i = scanner.nextInt();
+		}
+		catch(InputMismatchException exception) {
+			System.out.println("Please choose a valid number");
+			scanner.nextLine();
+			mediaDetailsMenu(media);
+			System.exit(0);
+		}
+
 		switch(i) {
 			case 0:
 				storeMenu();
+				break;
 			case 1:
 				cart.addMedia(media);
+				System.out.println("Number of medias in current cart: " + cart.getItemsOrdered().size());
 				storeMenu();
+				break;
 			case 2:
 				if (media instanceof CompactDisc) {
 					CompactDisc cd = (CompactDisc) media;
@@ -176,9 +228,15 @@ public class Aims {
 					System.out.println("Cannot play");
 				}
 				storeMenu();
+				break;
+			default:
+				System.out.println("Please choose a valid number");
+				storeMenu();
+				break;
 		}
 	}
 	
+
 	// 2. Update store
 	public static void updateStore() {
 		System.out.println("Options: ");
@@ -189,55 +247,80 @@ public class Aims {
 		System.out.println("--------------------------------");
 		System.out.println("Please choose a number: 0-1-2");
 
-		int i = scanner.nextInt();
+		int i = 0;
+		try {
+			i = scanner.nextInt();
+		}
+		catch(InputMismatchException exception) {
+			System.out.println("Please choose a valid number");
+			scanner.nextLine();
+			updateStore();
+			System.exit(0);
+		}
+
 		switch(i) {
 			case 0:
 				showMenu();
+				break;
 			case 1:
 				updateStore1();
+				break;
 			case 2:
 				updateStore2();
+				break;
 			default:
 				System.out.println("Please choose a valid number");
 				updateStore();
+				break;
 		}
 	}
 
 
 	public static void updateStore1() {
+		scanner.nextLine();
 		System.out.println("Enter title: ");
-		String title = scanner.next();
+		String title = scanner.nextLine();
 		System.out.println("Enter media type: ");
-		String type = scanner.next();
+		String type = scanner.nextLine();
 
 		switch(type.toLowerCase()) {
 			case "compactdisc":
 				CompactDisc cd = new CompactDisc(title);
 				store.addMedia(cd);
+				System.out.println("Number of medias in store: " + store.getItemsInStore().size());
 				updateStore();
+				break;
 			case "digitalvideodisc":
 				DigitalVideoDisc dvd = new DigitalVideoDisc(title);
 				store.addMedia(dvd);
+				System.out.println("Number of medias in store: " + store.getItemsInStore().size());
 				updateStore();
+				break;
 			case "book":
 				Book b = new Book(title);
 				store.addMedia(b);
+				System.out.println("Number of medias in store: " + store.getItemsInStore().size());
 				updateStore();
+				break;
 			default:
 				System.out.println("Please choose a valid media type");
 				updateStore();
+				break;
 		}
 
 	}
 
 
 	public static void updateStore2() {
+		scanner.nextLine();
 		System.out.println("Enter title: ");
-		String title = scanner.next();
+		String title = scanner.nextLine();
 		boolean flag = true;
+
 		for (Media m: store.getItemsInStore()) {
 			if (m.getTitle().equals(title)) {
 				store.removeMedia(m);
+				System.out.println("Number of medias in store: " + store.getItemsInStore().size());
 				flag = false;
 			}
 		}
@@ -261,23 +344,40 @@ public class Aims {
 		System.out.println("--------------------------------");
 		System.out.println("Please choose a number: 0-1-2-3-4-5");
 
-		int i = scanner.nextInt();
+		int i = 0;
+		try {
+			i = scanner.nextInt();
+		}
+		catch(InputMismatchException exception) {
+			System.out.println("Please choose a valid number");
+			scanner.nextLine();
+			cartMenu();
+			System.exit(0);
+		}
+
 		switch(i) {
 			case 0:
 				showMenu();
+				break;
 			case 1:
 				cartMenu1();
+				break;
 			case 2:
 				cartMenu2();
+				break;
 			case 3:
 				cartMenu3();
+				break;
 			case 4:
 				cartMenu4();
+				break;
 			case 5:
 				cartMenu5();
+				break;
 			default:
 				System.out.println("Please choose a valid number");
 				cartMenu();
+				break;
 		}
 	}
 
@@ -291,23 +391,38 @@ public class Aims {
 		System.out.println("--------------------------------");
 		System.out.println("Please choose a number: 0-1-2");
 
-		int i = scanner.nextInt();
+		int i = 0;
+		try {
+			i = scanner.nextInt();
+		}
+		catch(InputMismatchException exception) {
+			System.out.println("Please choose a valid number");
+			scanner.nextLine();
+			cartMenu1();
+			System.exit(0);
+		}
+
 		switch(i) {
 			case 0:
 				cartMenu();
+				break;
 			case 1:
 				System.out.println("Enter id: ");
 				int id = scanner.nextInt();
 				cart.searchById(id);
 				cartMenu();
+				break;
 			case 2:
 				System.out.println("Enter title: ");
-				String title = scanner.next();
+				String title = scanner.nextLine();
+				title = scanner.nextLine();
 				cart.searchByTitle(title);
 				cartMenu();
+				break;
 			default:
 				System.out.println("Please choose a valid number");
 				cartMenu();
+				break;
 		}
 	}
 
@@ -321,29 +436,49 @@ public class Aims {
 		System.out.println("--------------------------------");
 		System.out.println("Please choose a number: 0-1-2");
 
-		int i = scanner.nextInt();
+		int i = 0;
+		try {
+			i = scanner.nextInt();
+		}
+		catch(InputMismatchException exception) {
+			System.out.println("Please choose a valid number");
+			scanner.nextLine();
+			cartMenu2();
+			System.exit(0);
+		}
+
 		switch(i) {
 			case 0:
 				cartMenu();
+				break;
 			case 1:
 				Collections.sort(cart.getItemsOrdered(), Media.COMPARE_BY_TITLE_COST);
 				cart.print();
 				cartMenu();
+				break;
 			case 2:
 				Collections.sort(cart.getItemsOrdered(), Media.COMPARE_BY_COST_TITLE);
 				cart.print();
 				cartMenu();
+				break;
+			default:
+				System.out.println("Please choose a valid number");
+				cartMenu();
+				break;
 		}
 	}
 
 
 	public static void cartMenu3() {
+		scanner.nextLine();
 		System.out.println("Enter title: ");
-		String title = scanner.next();
+		String title = scanner.nextLine();
 		boolean flag = true;
+
 		for (Media m: cart.getItemsOrdered()) {
 			if (m.getTitle().equals(title)) {
 				cart.removeMedia(m);
+				System.out.println("Number of medias in cart: " + cart.getItemsOrdered().size());
 				flag = false;
 			}
 		}
@@ -355,9 +490,11 @@ public class Aims {
 
 
 	public static void cartMenu4() {
+		scanner.nextLine();
 		System.out.println("Enter title: ");
-		String title = scanner.next();
+		String title = scanner.nextLine();
 		boolean flag = true;
+
 		for (Media m: cart.getItemsOrdered()) {
 			if (m.getTitle().equals(title)) {
 				if (m instanceof CompactDisc) {
@@ -377,6 +514,7 @@ public class Aims {
 		if (flag) {
 			System.out.println("No match is found");
 		}
+		cartMenu();
 	}
 
 

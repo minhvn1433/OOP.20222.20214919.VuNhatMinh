@@ -1,0 +1,19 @@
+9.
+- Cart, Store agrgregated Media.
+
+
+10.
+- It will return false.
+
+
+11.
+- First create an empty list of medias. Then create some medias and add to the list. Finally
+iterate through the list and print out information of each media.
+
+
+12.
+- Media.
+- Details in media comparator. If the first ordering rule is equal, then use the second
+ordering rule.
+- No.
+- If title is equal, then use decreasing length. If length is equal, the use cost.

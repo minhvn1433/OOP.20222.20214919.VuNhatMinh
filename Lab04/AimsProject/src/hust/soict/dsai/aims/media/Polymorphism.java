@@ -16,9 +16,6 @@ public class Polymorphism {
         mediae.add(cd);
         mediae.add(dvd);
         mediae.add(b);
-        Track t = new Track();
-        cd.addTrack(t);
-        
         for (Media m : mediae) {
             System.out.println(m.toString());
         }

@@ -14,8 +14,8 @@ public class Cart {
 
 	public float totalCost() {
 		float cost = 0;
-		for (Media media: itemsOrdered) {
-			cost += media.getCost();
+		for (Media m: itemsOrdered) {
+			cost += m.getCost();
 		}
 		return cost;
 	}
