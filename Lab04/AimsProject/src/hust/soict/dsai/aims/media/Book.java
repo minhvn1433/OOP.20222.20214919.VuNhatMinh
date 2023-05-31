@@ -18,6 +18,9 @@ public class Book extends Media {
 		super(title, category, cost);
 		this.authors = authors;
 	}
+	public Book(String title, String category, float cost) {
+		super(title, category, cost);
+	}
 	public Book(String title) {
 		super(title);
 	}
@@ -37,9 +40,9 @@ public class Book extends Media {
 		}
 	}
 
-	
+
 	public String toString() {
-		return String.format("%s - Title: %s - Category: %s  - Cost: %f",
-		this.getClass(), this.getTitle(), this.getCategory(), this.getCost());
+		return String.format("Book - Title: %s - Category: %s  - Cost: %f",
+		this.getTitle(), this.getCategory(), this.getCost());
 	}
 }
